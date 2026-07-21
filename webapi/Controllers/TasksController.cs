@@ -16,7 +16,12 @@ public class TasksController(ITaskService service) : ControllerBase
     public async Task<ActionResult<IEnumerable<TaskItem>>> GetByStatus(
         TaskItemStatus status)
     {
-        return Ok();
+        var tasks = await service.GetAllAsync();
+
+        var filteredTasks = tasks
+            .Where(task => task.Status == status);
+
+        return Ok(filteredTasks);
     }
 
     /// <summary>
