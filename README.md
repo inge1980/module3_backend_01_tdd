@@ -38,7 +38,7 @@ The red ? green development process can be followed through the Git commit histo
 
 ## How to run automatic Tests
 
-Build the project:
+Run the tests:
    ```bash
    dotnet test
    ```
