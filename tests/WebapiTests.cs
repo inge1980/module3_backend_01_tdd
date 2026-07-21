@@ -8,6 +8,35 @@ namespace tests;
 public class WebapiTests
 {
 
+    [Theory]
+    [InlineData(TaskItemStatus.Open)]
+    [InlineData(TaskItemStatus.Completed)]
+    public async Task GetByStatus_ShouldReturnOnlyTasksWithRequestedStatus(
+        TaskItemStatus status)
+    {
+        // Arrange
+        var service = new TaskService();
+        var controller = new TasksController(service);
+
+
+        // Act
+        var result = await controller.GetByStatus(status);
+
+
+        // Assert
+        var ok = result.Result as OkObjectResult;
+
+        Assert.NotNull(ok);
+
+        var tasks = ok.Value as IEnumerable<TaskItem>;
+
+        Assert.NotNull(tasks);
+
+        Assert.All(
+            tasks,
+            task => Assert.Equal(status, task.Status));
+    }
+
     [Fact]
     public async Task UpdateStatus_WithExistingTask_ShouldUpdateStatus()
     {

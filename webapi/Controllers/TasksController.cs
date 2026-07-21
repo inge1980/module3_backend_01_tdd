@@ -10,6 +10,16 @@ public class TasksController(ITaskService service) : ControllerBase
 {
 
     /// <summary>
+    /// Henter alle oppgaver med en spesifikk status.
+    /// </summary>
+    [HttpGet("status/{status}")]
+    public async Task<ActionResult<IEnumerable<TaskItem>>> GetByStatus(
+        TaskItemStatus status)
+    {
+        return Ok();
+    }
+
+    /// <summary>
     /// Oppdaterer statusen til en oppgave.
     /// </summary>
     [HttpPut("{id}/status")]
