@@ -17,7 +17,16 @@ public class TasksController(ITaskService service) : ControllerBase
         int id,
         TaskItemStatus status)
     {
-        return Ok();
+        var task = await service.GetByIdAsync(id);
+
+        if (task == null)
+        {
+            return NotFound();
+        }
+
+        task.Status = status;
+
+        return Ok(task);
     }
 
     /// <summary>

@@ -9,7 +9,7 @@ public class WebapiTests
 {
 
     [Fact]
-    public async Task UpdateStatus_WithExistingTask_ShouldChangeStatusToCompleted()
+    public async Task UpdateStatus_WithExistingTask_ShouldUpdateStatus()
     {
         // Arrange
         var service = new TaskService();
