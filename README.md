@@ -64,7 +64,7 @@ Run the tests:
     http://localhost:5179/swagger/index.html
     ```
 
-    or using cURL / Postman / HTTPie with
+    or using cURL / Postman / HTTPie / hoppscotch.io with
     ```
     http://localhost:5179/api/tasks/
     ```
