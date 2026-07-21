@@ -10,6 +10,15 @@ public class TasksController(ITaskService service) : ControllerBase
 {
 
     /// <summary>
+    /// Henter alle oppgaver som er åpne og har en forfallsdato som er passert.
+    /// </summary>
+    [HttpGet("overdue")]
+    public async Task<ActionResult<IEnumerable<TaskItem>>> GetOverdue()
+    {
+        return Ok();
+    }
+
+    /// <summary>
     /// Henter alle oppgaver med en spesifikk status.
     /// </summary>
     [HttpGet("status/{status}")]

@@ -8,6 +8,28 @@ namespace tests;
 public class WebapiTests
 {
 
+    [Fact]
+    public async Task GetOverdue_ShouldReturnOnlyOverdueOpenTasks()
+    {
+        // Arrange
+        var service = new TaskService();
+        var controller = new TasksController(service);
+
+        // Act
+        var result = await controller.GetOverdue();
+
+        // Assert
+        var ok = result.Result as OkObjectResult;
+        Assert.NotNull(ok);
+        var tasks = ok.Value as IEnumerable<TaskItem>;
+        Assert.NotNull(tasks);
+        Assert.All(tasks, task =>
+        {
+            Assert.True(task.DueDate < DateTime.Now);
+            Assert.Equal(TaskItemStatus.Open, task.Status);
+        });
+    }
+
     [Theory]
     [InlineData(TaskItemStatus.Open)]
     [InlineData(TaskItemStatus.Completed)]

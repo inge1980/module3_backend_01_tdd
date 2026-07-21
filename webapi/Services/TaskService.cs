@@ -23,6 +23,15 @@ public class TaskService : ITaskService
             Status = TaskItemStatus.Completed,
             CreatedAt = DateTime.Now.AddDays(-2),
             DueDate = null
+        },
+        new TaskItem
+        {
+            Id = 3,
+            Title = "Do programming (overdue)",
+            Description = "Old unfinished task",
+            Status = TaskItemStatus.Open,
+            CreatedAt = DateTime.Now.AddDays(-15),
+            DueDate = DateTime.Now.AddDays(-2)
         }
     };
 
