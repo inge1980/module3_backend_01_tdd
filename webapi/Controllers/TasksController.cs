@@ -15,7 +15,14 @@ public class TasksController(ITaskService service) : ControllerBase
     [HttpGet("overdue")]
     public async Task<ActionResult<IEnumerable<TaskItem>>> GetOverdue()
     {
-        return Ok();
+        var tasks = await service.GetAllAsync();
+
+        var overdue = tasks.Where(task =>
+            task.DueDate.HasValue &&
+            task.DueDate < DateTime.Now &&
+            task.Status == TaskItemStatus.Open);
+
+        return Ok(overdue);
     }
 
     /// <summary>
