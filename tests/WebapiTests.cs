@@ -9,6 +9,30 @@ public class WebapiTests
 {
 
     [Fact]
+    public async Task UpdateStatus_WithExistingTask_ShouldChangeStatusToCompleted()
+    {
+        // Arrange
+        var service = new TaskService();
+        var controller = new TasksController(service);
+
+        // Act
+        var result = await controller.UpdateStatus(
+            1,
+            TaskItemStatus.Completed
+        );
+
+        // Assert
+        var ok = result as OkObjectResult;
+        Assert.NotNull(ok);
+        var task = ok.Value as TaskItem;
+        Assert.NotNull(task);
+        Assert.Equal(
+            TaskItemStatus.Completed,
+            task.Status
+        );
+    }
+
+    [Fact]
     public async Task Get_ShouldReturnAllTasks()
     {
         // Arrange
