@@ -1,7 +1,7 @@
 ### T.D.D. - Test Driven Developement
 
 First I wrote some tests for the existing webapi from class last week, to get familarized with the methods. 
-Then I started with Test Driven Developement. See commits for more details.
+Then I started with Test Driven Developement.
 
 ## Added Endpoints
 
