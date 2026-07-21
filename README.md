@@ -34,7 +34,7 @@ Implemented tests include:
 - Verifying filtering tasks by status using xUnit `[Theory]` with multiple status values.
 - Verifying that an existing task status can be updated.
 
-The red --> green development process can be followed through the Git commit history.
+The red → green development process can be followed through the Git commit history.
 
 ## How to run automatic Tests
 
